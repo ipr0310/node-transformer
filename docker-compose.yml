@@ -1,0 +1,31 @@
+################################################
+# DO NOT PUT SENSIBLE INFORMATION HERE         #
+#                                              #
+# PUT SENSIBLE INFO ONLY ON PRIVATE ENV FILES  #
+#                                              #
+# VARIABLES ARE ON THIS FILE BECAUSE OF A DEMO #
+#                                              #
+# NEVER SUBMIT YOUR SECRET KEYS ON A REPO      #
+################################################
+
+services:
+  web:
+    restart: unless-stopped
+    build: .
+    environment:
+      APP_PORT: '4193'
+      DB_CONNECTION_STRING: 'mongodb://mongodb/vehicle'
+    ports:
+      - '4193:4193'
+    expose:
+      - '4193'
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
+    container_name: mongodb_container
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: vehicle

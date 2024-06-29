@@ -143,8 +143,6 @@ export class MakesService implements OnModuleInit {
         return [];
       });
 
-    if (!type) return [];
-
     return type;
   }
 }
